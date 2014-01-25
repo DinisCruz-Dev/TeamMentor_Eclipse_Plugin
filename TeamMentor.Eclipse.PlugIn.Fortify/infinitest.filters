@@ -1,2 +1,3 @@
 Tests in a certain package:
 #tests\.eclipse\..*
+tm\.eclipse\..*

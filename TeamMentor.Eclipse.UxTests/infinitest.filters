@@ -1,0 +1,3 @@
+Tests inside the tm.eclipse and tm.swtbot (since they need valid eclipse objects):
+tm\.eclipse\..*
+tm\.swtbot\..*

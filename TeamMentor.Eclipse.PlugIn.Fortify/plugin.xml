@@ -1,113 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
-<plugin>
-
-   <extension
-         point="org.eclipse.ui.editors">
-      <editor
-            name="G2 Script (Groovy)"
-            extensions="g2"
-            icon="icons/TM.ico"
-            contributorClass="g2.scripts.editors.MultiPageEditorContributor"
-            class="g2.scripts.editors.MultiPageEditor"
-            id="g2.scripts.editors.MultiPageEditor">
-      </editor>
-   </extension>
-   
-   
+<plugin>   
    <extension point="org.eclipse.ui.views">
-      <category name="G2 (Groovy)"
-            	id="New_G2_View">
+      <category name="TeamMentor Views"
+            	id="TeamMentor_Views">
       </category>
-      <view name="Write TeamMentor Script"
-            icon="icons/TM.ico"
-            category="New_G2_View"
-            class="g2.scripts.views.SimpleEditor"
-            id="g2.scripts.views.SimpleEditor">
+      <view
+            allowMultiple="true"
+            category="TeamMentor_Views"
+            class="tm.eclipse.ui.views.SimpleEditor"
+            icon="images/icons/TM.ico"
+            id="g2.scripts.views.SimpleEditor"
+            name="Write TeamMentor Script"
+            restorable="false">
       </view>
       <view name			= "Web Browser"
-            icon			= "icons/TM.ico"
-            category		= "New_G2_View"
-            class			= "g2.scripts.views.DefaultPart_WebBrowser"
-            id				= "g2.scripts.views.DefaultPart_WebBrowser"
+            icon			= "images/pngs/script_edit.png"
+            category		= "TeamMentor_Views"
+            class			= "tm.eclipse.ui.views.DefaultPart_WebBrowser"
+            id				= "tm.eclipse.ui.views.DefaultPart_WebBrowser"
             allowMultiple 	= "true"
             restorable 		= "false">
       </view>
-      <view name			= "Panel"
-            icon			= "icons/TM.ico"
-            category		= "New_G2_View"
-            class			= "g2.scripts.views.DefaultPart_Panel"
-            id				= "g2.scripts.views.DefaultPart_Panel"
+      <view name			= "Eclipse Panel"
+            icon			= "images/icons/TM.ico"
+            category		= "TeamMentor_Views"
+            class			= "tm.eclipse.ui.views.Eclipse_Panel"
+            id				= "tm.eclipse.ui.views.Eclipse_Panel"
             allowMultiple 	= "true"
             restorable 		= "false">
       </view>
    </extension>
    
    
-   <extension point="org.eclipse.ui.newWizards">
-      <category
-            name="G2 Wizard"
-            id="New_G2_Wizard">
-      </category>
-      <wizard
-            name="Write G2 Script"
-            icon="icons/TM.ico"
-            category="New_G2_Wizard"
-            class="g2.scripts.wizards.SampleNewWizard"
-            id="g2.scripts.wizards.SampleNewWizard">
-      </wizard>
-   </extension>
    
   <extension point="org.eclipse.ui.preferencePages">
      <page
-           class="teammentor.eclipse.plugin.fortify.preferences.PluginPreferences"
-           id="teammentor.eclipse.plugin.fortify.preferences.PluginPreferences"
+           class="tm.eclipse.ui.pluginPreferences.pages.MainPreferences"
+           id="tm.eclipse.ui.pluginPreferences"
            name="TeamMentor Preferences">
      </page>
+     <!--
+     <page
+           category="tm.eclipse.ui.pluginPreferences"
+           class="tm.eclipse.ui.pluginPreferences.pages.LoginToTM"
+           id="tm.eclipse.ui.PluginPreferences.LoginToTM"
+           name="Login to TeamMentor">
+     </page>
+     -->
+     <!--
+     <page
+           category="tm.eclipse.ui.PluginPreferences"
+           class="tm.eclipse.ui.PluginPreferences.Register"
+           id="tm.eclipse.ui.PluginPreferences.Register"
+           name="Register in TM">
+     </page>
+     
+     <page
+           category="tm.eclipse.ui.pluginPreferences"
+           class="tm.eclipse.ui.pluginPreferences.pages.EditAboutPage"
+           id="tm.eclipse.ui.pluginPreferences.pages.EditAboutPage"
+           name="Edit About Page">
+     </page>
+     -->
+     <page
+           category="tm.eclipse.ui.pluginPreferences"
+           class="tm.eclipse.ui.pluginPreferences.pages.Config"
+           id="tm.eclipse.ui.pluginPreferences.pages.Config"
+           name="Config">
+     </page>
+     <!--
+     <page
+           category="tm.eclipse.ui.PluginPreferences"
+           class="tm.eclipse.ui.PluginPreferences.EditTemplate"
+           id="tm.eclipse.ui.PluginPreferences.EditTemplate"
+           name="Edit HtmlTemplate">
+     </page>
+     <page
+           category="tm.eclipse.ui.PluginPreferences"
+           class="tm.eclipse.ui.PluginPreferences.EditMappingsForTM"
+           id="tm.eclipse.ui.PluginPreferences.EditMappingsForTM"
+           name="Edit GUIDs Mappings">
+     </page>
+     -->
   </extension>
   <extension
         point="org.eclipse.core.runtime.preferences">
      <initializer
-           class="teammentor.eclipse.plugin.fortify.preferences.PreferenceInitializer">
+           class="tm.eclipse.ui.pluginPreferences.PreferenceInitializer">
      </initializer>
   </extension>
-  
+ <!--
     <extension
          point="org.eclipse.ui.actionSets">
-      <actionSet
-            label="Sample Action Set"
-            visible="true"
-            id="Plug2.actionSet">
-         <menu
-               label="&amp;TeamMentor"
-               id="teamMentorMenu">
+      <actionSet label="TeamMentor Action Set" visible="true" id="TM.actionSet">
+         <menu label="&amp;TeamMentor (Old)" id="teamMentorMenu">
             <separator name="teammentorGroup"></separator>
          </menu>
+         
          <action
-               class="g2.scripts.actions.OpenSimpleEditor"
+               class="tm.eclipse.ui.actions.OpenSimpleEditor"
+               icon="images/pngs/script_go.png"
                id="g2.scripts.actions.OpenSimpleEditor"
                label="&amp;Util - Write Script (TeamMentor DSL)"
                menubarPath="teamMentorMenu/teammentorGroup"
                tooltip="Util - Write Script (TeamMentor DSL)">
-         </action>
+         </action>  
+                
          <action
-               class="g2.scripts.actions.OpenPropertiesPage"
+               class="tm.eclipse.ui.actions.OpenPropertiesPage"
                id="g2.scripts.actions.OpenPropertiesPage"
-               label="&amp;Open properties Page"
+               label="&amp;Open Properties Page"
                menubarPath="teamMentorMenu/teammentorGroup"
                tooltip="&amp;Open properties Page">
          </action>
+         
          <action
                label="&amp;Open TeamMentor.net"
-               icon="icons/TM.ico"
-               class="g2.scripts.actions.OpenTeamMentor"
+               icon="images/icons/TM.ico"
+               class="tm.eclipse.ui.actions.OpenTeamMentor"
                tooltip="Open TeamMentor.net"
                menubarPath="teamMentorMenu/teammentorGroup"               
                id="g2.scripts.actions.OpenTeamMentor">
          </action>
          <action
-               class="g2.scripts.actions.EnableTeamMentor"
-               icon="icons/TM.ico"
+               class="tm.eclipse.ui.actions.EnableTeamMentor"
+               icon="images/icons/TM.ico"
                id="g2.scripts.actions.EnableTeamMentor"
                label="&amp;Open TeamMentor View"
                menubarPath="teamMentorMenu/teammentorGroup"
@@ -115,5 +133,98 @@
          </action>
       </actionSet>
    </extension>
-
+  --> 
+    <extension
+          point="org.eclipse.ui.startup">
+       <startup
+             class="tm.eclipse.ui.Startup">
+       </startup>
+    </extension>
+    <extension point="org.eclipse.ui.menus">
+       <menuContribution allPopups="false" locationURI="menu:org.eclipse.ui.main.menu">
+          <menu label="TeamMentor">
+             <command commandId="tm.eclipse.commands.ShowHelpPage"
+                   	  icon="images/icons/TM.ico"
+                   	  label="About TeamMentor Eclipse Plugin"
+                   	  style="push">
+             </command>
+             <command
+                   commandId="tm.eclipse.commands.OpenTeamMentorWebsite"
+                   icon="images/icons/TM.ico"
+                   label="Open TeamMentor Website"
+                   style="push">
+             </command>
+             <command
+                   commandId="tm.eclipse.commands.OpenPropertiesPage"
+                   icon="images/pngs/application_view_detail.png"
+                   label="Open Properties Page"
+                   style="push">
+             </command>
+             <menu
+                   icon="images/pngs/cog.png"
+                   label="Advanced and Debug Features">
+                <command
+                      commandId="tm.eclipse.commands.OpenScriptEditor"
+                      icon="images/pngs/script_go.png"
+                      label="&amp;Util - Write Script (TeamMentor DSL)"
+                      style="push">
+                   <visibleWhen
+                         checkEnabled="true">
+                   </visibleWhen>
+                </command>
+                <visibleWhen
+                      checkEnabled="true">
+                </visibleWhen>
+                <command
+                      commandId="tm.eclipse.commands.InvokePropertiesTests"
+                      icon="images/pngs/mouse.png"
+                      label="Open QA Automation GUI"
+                      style="push">
+                      <visibleWhen
+                         checkEnabled="true">
+                      </visibleWhen>
+                </command>
+             </menu>
+          </menu>
+       </menuContribution>
+       
+       
+    </extension>
+    <extension
+          point="org.eclipse.ui.commands">
+       <command 
+             defaultHandler="tm.eclipse.handlers.ShowHelpPage"
+             id="tm.eclipse.commands.ShowHelpPage"                         
+             name="Show TeamMentor Help Page">
+       </command>
+       <command
+             defaultHandler="tm.eclipse.handlers.OpenTeamMentorWebsite"
+             id="tm.eclipse.commands.OpenTeamMentorWebsite"             
+             name="Open TeamMentor Website">
+       </command>
+       <command
+             defaultHandler="tm.eclipse.handlers.OpenPropertiesPage"
+             id="tm.eclipse.commands.OpenPropertiesPage"
+             name="Open Properties Page">
+       </command>
+       <command
+             defaultHandler="tm.eclipse.handlers.OpenScriptEditor"
+             id="tm.eclipse.commands.OpenScriptEditor"
+             name="Open TeamMentor Script Editor">
+       </command>
+       <command
+             defaultHandler="tm.eclipse.handlers.InvokePropertiesTests"
+             id="tm.eclipse.commands.InvokePropertiesTests"
+             name="Invoke TM Properties Tests">
+       </command>
+    </extension>
+    <!--
+    <extension
+          point="org.eclipse.ui.handlers">
+       <handler
+             class="tm.eclipse.handlers.ShowHelpPage"
+             commandId="tm.ShowAboutPlugin">
+       </handler>
+    </extension>
+	-->
 </plugin>

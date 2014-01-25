@@ -1,2 +1,5 @@
 .metadata
 TeamMentor.Eclipse.Plugin.Fortify.SWTBot
+*.xdsl
+.DS_Store
+bin

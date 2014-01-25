@@ -2,36 +2,50 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: TeamMentor Eclipse Plugin Fortify
 Bundle-SymbolicName: TeamMentor.Eclipse.Plugin.Fortify;singleton:=true
-Bundle-Version: 1.3.5.qualifier
-Bundle-Activator: g2.scripts.Activator
+Bundle-Version: 1.6.0.qualifier
+Bundle-Activator: tm.eclipse.ui.Activator
 Require-Bundle: org.eclipse.ui,
+ org.eclipse.swt,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,
+ org.eclipse.core.filesystem;bundle-version="1.3.100",
+ org.eclipse.core.databinding;bundle-version="1.4.0",
  org.eclipse.ui.editors,
  org.eclipse.ui.ide,
+ org.eclipse.ui.workbench,
+ org.eclipse.ui.console;bundle-version="3.5.100",
  org.eclipse.jdt.core;bundle-version="3.7.3",
- org.codehaus.groovy;bundle-version="2.0.7",
- org.codehaus.groovy.eclipse.ui;bundle-version="2.8.0",
+ org.eclipse.jdt.ui;bundle-version="3.7.2",
  org.eclipse.jface.text;bundle-version="3.7.2",
- org.junit
+ org.eclipse.jface.databinding;bundle-version="1.5.0",
+ org.eclipse.equinox.registry,
+ org.eclipse.osgi.services;bundle-version="3.3.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: g2.java.api.EclipseApi,
- g2.scripts;uses:="org.eclipse.jface.resource,org.eclipse.ui.plugin,org.osgi.framework",
- g2.scripts.actions;uses:="org.eclipse.jface.action,org.eclipse.ui,org.eclipse.jface.viewers",
- g2.scripts.editors;
-  uses:="org.eclipse.jface.action,
-   org.eclipse.ui.texteditor,
-   org.eclipse.core.runtime,
-   org.codehaus.groovy.eclipse.editor,
-   org.eclipse.ui,
-   org.eclipse.core.resources,
-   org.eclipse.swt.custom,
-   org.eclipse.ui.part,
-   org.eclipse.swt.widgets",
- g2.scripts.views;uses:="org.eclipse.ui.part,org.eclipse.swt.widgets",
- g2.scripts.wizards;
-  uses:="org.eclipse.jface.wizard,
-   org.eclipse.ui,
-   org.eclipse.jface.viewers,
-   org.eclipse.swt.widgets"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: bsh,
+ tm.eclipse,
+ tm.eclipse.api,
+ tm.eclipse.groovy.plugins,
+ tm.eclipse.helpers,
+ tm.eclipse.swt,
+ tm.eclipse.swt.controls,
+ tm.eclipse.swt.controls.extra,
+ tm.eclipse.ui,
+ tm.eclipse.ui.actions,
+ tm.eclipse.ui.pluginPreferences,
+ tm.eclipse.ui.views,
+ tm.teammentor,
+ tm.utils
+Bundle-ClassPath: .,
+ libs/bsh-2.0b4.jar,
+ libs/commons-io-2.4.jar,
+ libs/groovy-all-2.0.7.jar,
+ libs/groovy-eclipse.jar,
+ libs/org.apache.log4j_1.2.15.v201012070815.jar,
+ libs/org.codehaus.groovy.eclipse.ui_2.8.0.xx-20130703-1500-e37-RELEASE.jar,
+ libs/org.eclipse.jdt.groovy.core_2.8.0.xx-20130703-1500-e37-RELEASE.jar,
+ libs/org.eclipse.swtbot.swt.finder_2.1.2.201311041021.jar,
+ libs/org.hamcrest.core_1.3.0.v201303031735.jar,
+ libs/org.hamcrest.library_1.3.0.v201305281000.jar,
+ libs/junit.jar
+Bundle-Vendor: Securtiy Innovation
