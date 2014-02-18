@@ -1,9 +1,11 @@
 package tm.eclipse.ui.views;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.browser.Browser;
+//import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
+
+import tm.eclipse.swt.controls.Browser;
 
 public class DefaultPart_WebBrowser extends ViewPart 
 {

@@ -2,6 +2,7 @@ package tm.eclipse.ui.pluginPreferences.pages;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
+import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
@@ -22,7 +23,7 @@ public class Config extends FieldEditorPreferencePage implements IWorkbenchPrefe
 	}
 
 	@Override
-	protected void createFieldEditors() 
+	protected void createFieldEditors()  
 	{
 		final Composite parent = getFieldEditorParent();
 		Group group_Config = new Group(parent, SWT.NONE);		
@@ -30,8 +31,7 @@ public class Config extends FieldEditorPreferencePage implements IWorkbenchPrefe
 		addField(new BooleanFieldEditor(PreferenceInitializer.P_OPEN_ARTICLE_NEW_WINDOW	 , "&Open TeamMentor article in new window"	, group_Config));		
 		addField(new BooleanFieldEditor(PreferenceInitializer.P_TEAMMENTOR_LOAD_PLUGINS	 , "&Load Plugins on Startup"				, group_Config));		
 		addField(new BooleanFieldEditor(PreferenceInitializer.P_TEAMMENTOR_ADVANCED_MODE , "&Show Advanced Mode Features"			, group_Config));
-
-		
+		addField(new StringFieldEditor (PreferenceInitializer.P_TEAMPROFESSOR_URL_ID     , "&Team Professor Link Identifier"		, parent));
 	}
 
 	@Override

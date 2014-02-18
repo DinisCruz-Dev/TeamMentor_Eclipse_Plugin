@@ -43,4 +43,10 @@ public class Platform
 				return Arrays.asList(display.getShells());
 			}});
 	}
+
+	@SuppressWarnings("restriction")
+	public String OS() 
+	{
+		return internalPlatform().getOS();
+	}
 }

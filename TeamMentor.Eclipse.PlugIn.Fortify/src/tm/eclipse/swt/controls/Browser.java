@@ -1,28 +1,46 @@
 package tm.eclipse.swt.controls;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.List;
+
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.browser.LocationEvent;
+import org.eclipse.swt.browser.LocationListener;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.Result;
+import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.utils.SWTUtils;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotBrowser;
 import org.eclipse.ui.part.ViewPart;
 
+import tm.eclipse.api.EclipseAPI;
+import tm.eclipse.ui.pluginPreferences.TM_Preferences;
+import tm.lang.Reflection;
+
 
 public class Browser extends org.eclipse.swt.browser.Browser
 {			
-	public Display 		 display;
-	public Composite     parent;
-	public ViewPart		 viewPart;
-	public SWTBotBrowser swtBotBrowser;
+	public Display 		 	display;
+	public Composite     	parent;
+	public ViewPart		 	viewPart;
+	public SWTBotBrowser 	swtBotBrowser;
+	public Reflection		reflection;
+	public LocationListener locationListener;
 	
 	public Browser(Composite parent, int style) 
 	{				
 		super(parent, style);
-		display      = parent.getDisplay();
-		this.parent   = parent;
-		swtBotBrowser = new SWTBotBrowser(this);
+		display         = parent.getDisplay();
+		this.parent     = parent;
+		swtBotBrowser   = new SWTBotBrowser(this);
+		this.reflection = new Reflection(this);
 	} 
 	public static Browser add_Browser(final Composite target)
 	{
@@ -69,6 +87,26 @@ public class Browser extends org.eclipse.swt.browser.Browser
 	{
 		swtBotBrowser.setUrl(url);
 		swtBotBrowser.waitForPageLoaded();
+		return this;
+	}
+	
+	/*public List<LocationListener> locationListeners()
+	{
+		Object webBrowser = reflection.field_Value("webBrowser");  
+		if (webBrowser != null)
+		{
+			
+		}
+		//LocationListener[] locationListeners = browser.lo
+		return null;
+	}*/
+	public Browser onLocationChange(final LocationListener locationListener)
+	{		
+		this.locationListener = locationListener;
+		UIThreadRunnable.syncExec(display, new VoidResult() { public void run()
+			{				
+				Browser.this.addLocationListener(Browser.this.locationListener);
+			}});
 		return this;
 	}
 }

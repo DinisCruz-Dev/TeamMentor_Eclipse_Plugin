@@ -18,6 +18,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer
 	public static final String P_TEAMMENTOR_ADVANCED_MODE   = "P_TEAMMENTOR_ADVANCED_MODE";	
 	public static final String P_TEAMMENTOR_LOAD_PLUGINS    = "P_TEAMMENTOR_LOAD_PLUGINS";
 	public static final String P_TEAMMENTOR_ABOUT_HTML      = "P_TEAMMENTOR_ABOUT_HTML";
+	public static final String P_TEAMPROFESSOR_URL_ID       = "P_TEAMPROFESSOR_URL_ID";
 	
 	public void initializeDefaultPreferences() 
 	{		
@@ -29,6 +30,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer
 		store.setDefault(P_TEAMMENTOR_LOAD_PLUGINS 	, true);
 		store.setDefault(P_TEAMMENTOR_ADVANCED_MODE	, false);
 		store.setDefault(P_TEAMMENTOR_ABOUT_HTML	, new GroovyPlugins().get_PluginScript_Code("/TM_Plugins/AboutText.html"));
+		store.setDefault(P_TEAMPROFESSOR_URL_ID	    , "ninja/#/courses/course/");
 		//store.setDefault(P_TEAMMENTOR_ABOUT_HTML	, new PluginResources().get_Resource_Saved_on_TempFolder("/TM_Plugins/About_Text"));
 	}
 

@@ -16,12 +16,14 @@ import java.util.Set;
 import groovy.lang.Binding;
 
 import org.codehaus.groovy.runtime.MethodClosure;
-import org.eclipse.swt.browser.Browser;
+import org.eclipse.swt.browser.LocationEvent;
+import org.eclipse.swt.browser.LocationListener;
 import org.eclipse.swtbot.swt.finder.results.Result;
 
 import tm.eclipse.Plugin_Config;
 import tm.eclipse.api.EclipseAPI;
 import tm.eclipse.api.Panels;
+import tm.eclipse.swt.controls.Browser;
 import tm.eclipse.swt.controls.extra.ObjectBrowser;
 import tm.eclipse.ui.pluginPreferences.TM_Preferences;
 import tm.eclipse.ui.PluginResources;
@@ -45,27 +47,27 @@ public class TeamMentorAPI
 	{}
 	
 	
-	public static void open_Article(String articleId)
+	public static Browser open_Article(String articleId)
 	{
 		loginIntoTM();
-		open_Article_Page("article", articleId);
+		return open_Article_Page("article", articleId);
 	}
 	
-	public static void view_Article(String articleId)
+	public static Browser view_Article(String articleId)
 	{
-		open_Article_Page("article", articleId);
+		return open_Article_Page("article", articleId);
 	}
-	public static void view_Raw(String articleId)
+	public static Browser view_Raw(String articleId)
 	{
-		open_Article_Page("raw", articleId);
+		return open_Article_Page("raw", articleId);
 	}
-	public static void view_Html(String articleId)
+	public static Browser view_Html(String articleId)
 	{
-		open_Article_Page("html", articleId);
+		return open_Article_Page("html", articleId);
 	}
-	public static void view_Content(String articleId)
+	public static Browser view_Content(String articleId)
 	{
-		open_Article_Page("content", articleId);
+		return open_Article_Page("content", articleId);
 	}
 	public static void view_Jsonp(String articleId)
 	{
@@ -139,6 +141,7 @@ public class TeamMentorAPI
 		String tmUrl = server + "/" + mode + "/" + articleId; 		
 		String browserId = (TM_Preferences.openArticleInNewWindow()) ? articleId : TM_Preferences.getDefaultBrowserId();
 		lastBrowser = eclipseAPI.panelFactory.open_Url_in_WebBrowser(browserId, tmUrl).browser;
+		new TeamProfessorAPI().setTeamProfessorBrowserLinkHook(lastBrowser);
 		return lastBrowser;
 	}
 
@@ -296,4 +299,6 @@ public class TeamMentorAPI
 		binding.setVariable("show"        , new MethodClosure( ObjectBrowser.class	   						   , "inspect"));
 		binding.setVariable("reflection"  , new MethodClosure( Reflection.class, "reflection"));
 	}
+	
+	
 }

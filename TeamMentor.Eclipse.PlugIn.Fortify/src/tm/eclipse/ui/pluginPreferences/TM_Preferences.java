@@ -64,4 +64,9 @@ public class TM_Preferences
 		MainPreferences.store.setValue(PreferenceInitializer.P_TEAMMENTOR_SESSION_ID, value);		
 	}
 
+	public static String getTeamProfessorUrlId()
+	{
+		return MainPreferences.store.getString(PreferenceInitializer.P_TEAMPROFESSOR_URL_ID);
+	}
+	
 }

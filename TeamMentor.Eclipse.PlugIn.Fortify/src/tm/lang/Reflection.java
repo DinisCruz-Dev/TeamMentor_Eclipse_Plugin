@@ -103,6 +103,7 @@ public class Reflection
 	public Object field_Value(Field field)
 	{
 		if (field!= null)
+		{
 			field.setAccessible(true);
 			try 
 			{
@@ -115,6 +116,7 @@ public class Reflection
 			{
 				e.printStackTrace();
 			}
+		}
 		return null;
 	}
 	public List<Field> fields()
