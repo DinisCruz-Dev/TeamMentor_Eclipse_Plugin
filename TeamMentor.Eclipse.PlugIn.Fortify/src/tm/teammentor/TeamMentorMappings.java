@@ -65,7 +65,11 @@ public class TeamMentorMappings
 	{
 		List<TeamMentorMapping> mappings = new ArrayList<TeamMentorMapping>();
 		for(String line : rawData_Lines())
-			mappings.add(new TeamMentorMapping(line));
+		{
+			TeamMentorMapping teamMentorMapping = new TeamMentorMapping(line);
+			if (teamMentorMapping.TM_GUID.equals("")==false)			
+				mappings.add(teamMentorMapping);
+		}
 		return mappings;
 		
 	}
