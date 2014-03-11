@@ -81,8 +81,19 @@ public class TeamMentorAPI
 	{
 		String sessionId = TM_Preferences.getSessionId();
 		String server    = TM_Preferences.getServer();
+		
 		Browser.setCookie("Session=" + sessionId , server);
-		//String cookie = Browser.getCookie("Session", TM_Preferences.getServer());
+		
+		// this solution is not 100% reliable, I think a better solution is to open a browser directly
+		String cookie = Browser.getCookie("Session", TM_Preferences.getServer());  
+	 
+		
+		/*if(cookie == null) 
+			eclipseAPI.log("[TeamMentorAPI][setBrowserCookieToTMSession] cookie 'Session' was null (it should be '" + sessionId +"'");
+		else	
+			if(cookie != sessionId)
+				eclipseAPI.log("[TeamMentorAPI][setBrowserCookieToTMSession] cookie 'Session' was not the correct value (it was '"+ cookie +"' and it should be '" + sessionId +"'");
+		//}*/
 		return TM_Preferences.getSessionId();
 	}
 	public static void setServer(String newServer)
