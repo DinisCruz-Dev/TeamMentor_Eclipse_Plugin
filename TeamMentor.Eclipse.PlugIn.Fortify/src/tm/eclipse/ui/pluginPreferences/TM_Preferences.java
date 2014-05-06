@@ -23,7 +23,12 @@ public class TM_Preferences
 	{			
 		return MainPreferences.store.getBoolean(PreferenceInitializer.P_TEAMMENTOR_ADVANCED_MODE);
 	}
-
+	
+	public static boolean forceOnline()
+	{			
+		return MainPreferences.store.getBoolean(PreferenceInitializer.P_FORCE_ONLINE);
+	}
+	
 	public static String getServer()
 	{
 		return MainPreferences.store.getString(PreferenceInitializer.P_TEAMMENTOR_SERVER);

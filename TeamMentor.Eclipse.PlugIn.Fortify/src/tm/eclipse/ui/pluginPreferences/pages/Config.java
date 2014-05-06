@@ -31,6 +31,7 @@ public class Config extends FieldEditorPreferencePage implements IWorkbenchPrefe
 		addField(new BooleanFieldEditor(PreferenceInitializer.P_OPEN_ARTICLE_NEW_WINDOW	 , "&Open TeamMentor article in new window"	, group_Config));		
 		addField(new BooleanFieldEditor(PreferenceInitializer.P_TEAMMENTOR_LOAD_PLUGINS	 , "&Load Plugins on Startup"				, group_Config));		
 		addField(new BooleanFieldEditor(PreferenceInitializer.P_TEAMMENTOR_ADVANCED_MODE , "&Show Advanced Mode Features"			, group_Config));
+		addField(new BooleanFieldEditor(PreferenceInitializer.P_FORCE_ONLINE             , "&Force Online"			                , group_Config));
 		addField(new StringFieldEditor (PreferenceInitializer.P_TEAMPROFESSOR_URL_ID     , "&Team Professor Link Identifier"		, parent));
 	}
 

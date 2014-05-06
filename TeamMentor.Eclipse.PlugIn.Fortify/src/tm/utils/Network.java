@@ -4,6 +4,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import tm.eclipse.Plugin_Config;
+import tm.eclipse.ui.pluginPreferences.TM_Preferences;
 
 public class Network 
 {	
@@ -17,12 +18,16 @@ public class Network
 	{		
 		if (Plugin_Config.FORCE_OFFLINE)
 			return false;
+		if (TM_Preferences.forceOnline())
+			return true;
 	    try 
 	    {
 	    	HttpURLConnection.setFollowRedirects(true);	      
 		    HttpURLConnection con = (HttpURLConnection) new URL(URLName).openConnection();
 		    con.setInstanceFollowRedirects(true);
 		    con.setRequestMethod("HEAD");
+		    con.setConnectTimeout(2000);         		// max wait is 2 secs
+		    con.setReadTimeout(2000);
 		    int responseCode = con.getResponseCode();
 		    return (responseCode == HttpURLConnection.HTTP_OK);
 	    }

@@ -148,7 +148,7 @@ public class TeamMentorAPI
 	{
 		String server = TM_Preferences.getServer();
 		if(url_Exists(server) == false )
-			return TeamMentorAPI.showOfflineMessage().browser;
+			return TeamMentorAPI.showOfflineMessage(server).browser;
 		String tmUrl = server + "/" + mode + "/" + articleId; 		
 		String browserId = (TM_Preferences.openArticleInNewWindow()) ? articleId : TM_Preferences.getDefaultBrowserId();
 		lastBrowser = eclipseAPI.panelFactory.open_Url_in_WebBrowser(browserId, tmUrl).browser;
@@ -273,9 +273,10 @@ public class TeamMentorAPI
 		return Consts_TM.EMPTY_GUID;
 	}
 	
-	public static DefaultPart_WebBrowser showOfflineMessage() 
+	public static DefaultPart_WebBrowser showOfflineMessage(String server) 
 	{
-		return TeamMentorAPI.show_Html_With_TeamMentor_Banner(Consts_Eclipse.DEFAULT_TM_NET_OFFLINE_MESSAGE);	
+		String html = String.format(Consts_Eclipse.DEFAULT_TM_NET_OFFLINE_MESSAGE, server);
+		return TeamMentorAPI.show_Html_With_TeamMentor_Banner(html);	
 	}
 	public static void mapGroovyBindings(Binding binding) 
 	{

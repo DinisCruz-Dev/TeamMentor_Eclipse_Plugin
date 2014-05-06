@@ -28,7 +28,7 @@ public class OpenTeamMentorWebsite implements IHandler
 		if(url_Exists(server))
 			panels.open_Url_in_WebBrowser("TeamMentor Website",server);
 		else
-			TeamMentorAPI.showOfflineMessage();
+			TeamMentorAPI.showOfflineMessage(server);
 			//panels.open_Html_in_WebBrowser(Eclipse_Consts.DEFAULT_TM_NET_OFFLINE_MESSAGE);				
 		return null;
 	}

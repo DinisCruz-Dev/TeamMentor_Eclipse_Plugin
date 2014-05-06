@@ -2,7 +2,7 @@
 <feature
       id="TeamMentor.Feature"
       label="TeamMentor Eclipse PlugIn - For Fortify"
-      version="1.6.1.qualifier"
+      version="1.6.3.qualifier"
       provider-name="Security Innovation">
 
    <description url="https://www.teammentor.net">
